@@ -17,10 +17,12 @@ class Server(commands.Cog):
             e.title = "Minervaを招待していただきありがとうございます！"
             e.description = textwrap.dedent(
                 f"""
-                このボットはDiscord上で大会を簡単に実施できるようにした
+                このボットはDiscord上で大会を簡単に実施できるようにしたMinervaです。
+                このBotの使い方や注意事項、利用規約に関しては各種リンクから公式ホームページをご覧ください。
                 ⇩ ⇩ 各種リンク ⇩ ⇩
-                [・公式ホームページ(作成中)]()
-                [・招待URL](https://discord.com/api/oauth2/authorize?client_id=734416043266670703&permissions=335011152&scope=bot)
+                ・[公式ホームページ(作成中)]()
+                ・[招待URL](https://discord.com/api/oauth2/authorize?client_id=734416043266670703&permissions=335011152&scope=bot)
+                ・[使用させていただいたアイコン](https://twitter.com/utaha_uta/status/1233728302059118592?s=20)
                 """
             )
             e.colour = 0x99FFFF
@@ -31,10 +33,6 @@ class Server(commands.Cog):
                 await channel.send(embed=e)
 
         await send_disclaimer_of_liability(guild)
-
-    @commands.command()
-    async def _hoge(self, ctx):
-        return
 
 
 def setup(bot):
