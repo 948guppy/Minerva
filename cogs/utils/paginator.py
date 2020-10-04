@@ -1,9 +1,12 @@
 import asyncio
+
 import discord
 from discord.ext.commands import Paginator as CommandPaginator
 
+
 class CannotPaginate(Exception):
     pass
+
 
 class Pages:
     """Implements a paginator that queries the user for the
@@ -30,6 +33,7 @@ class Pages:
     permissions: discord.Permissions
         Our permissions for the channel.
     """
+
     def __init__(self, ctx, *, entries, per_page=12, show_entry_count=True):
         self.bot = ctx.bot
         self.entries = entries
@@ -49,7 +53,7 @@ class Pages:
             ('\N{BLACK LEFT-POINTING TRIANGLE}', self.previous_page),
             ('\N{BLACK RIGHT-POINTING TRIANGLE}', self.next_page),
             ('\N{BLACK RIGHT-POINTING DOUBLE TRIANGLE WITH VERTICAL BAR}', self.last_page),
-            ('\N{INPUT SYMBOL FOR NUMBERS}', self.numbered_page ),
+            ('\N{INPUT SYMBOL FOR NUMBERS}', self.numbered_page),
             ('\N{BLACK SQUARE FOR STOP}', self.stop_pages),
             ('\N{INFORMATION SOURCE}', self.show_help),
         ]
@@ -243,9 +247,10 @@ class Pages:
             try:
                 await self.message.remove_reaction(payload.emoji, discord.Object(id=payload.user_id))
             except:
-                pass # can't remove it so don't bother doing so
+                pass  # can't remove it so don't bother doing so
 
             await self.match()
+
 
 class FieldPages(Pages):
     """Similar to Pages except entries should be a list of
@@ -266,6 +271,7 @@ class FieldPages(Pages):
                 text = f'Page {page}/{self.maximum_pages}'
 
             self.embed.set_footer(text=text)
+
 
 class TextPages(Pages):
     """Uses a commands.Paginator internally to paginate some text."""
